@@ -111,7 +111,7 @@ $sessionid = $row['id'];
               <div class="timeline row" data-toggle="isotope">
 
 
-<?php 
+<?php
 
 $posts = $conn->query("SELECT posts.id AS postid, body, added_at, added_by, posted_to, post_city, post_country, post_cat, post_privacy, post_hide, first_name, last_name, avatar FROM posts INNER JOIN users ON added_by=users.id WHERE posted_to=$sessionid AND post_hide=0 ORDER BY added_at DESC ");
 if($posts->num_rows > 0) {
@@ -178,7 +178,7 @@ if($posts->num_rows > 0) {
 
 <?php if($rowpost['post_cat']==2) {
 
-    $postpic = $conn->query("SELECT posts.id AS postid, photopost_src, photopost_thumb FROM POSTS INNER JOIN photoposts ON posts.id=post_id WHERE post_id=".$rowpost['postid']."");
+    $postpic = $conn->query("SELECT posts.id AS postid, photopost_src, photopost_thumb FROM posts INNER JOIN photoposts ON posts.id=post_id WHERE post_id=".$rowpost['postid']."");
     if($postpic->num_rows > 0) {
         while ($rowpic = $postpic->fetch_assoc()) { ?>
 
@@ -188,7 +188,7 @@ if($posts->num_rows > 0) {
     }
 
 } else if ($rowpost['post_cat']==3) {
-$postvid = $conn->query("SELECT posts.id AS postid, videopost_src FROM POSTS INNER JOIN videoposts ON posts.id=post_id WHERE post_id=".$rowpost['postid']."");
+$postvid = $conn->query("SELECT posts.id AS postid, videopost_src FROM posts INNER JOIN videoposts ON posts.id=post_id WHERE post_id=".$rowpost['postid']."");
 if($postvid->num_rows > 0) {
     while ($rowvid = $postvid->fetch_assoc()) { ?>
 
@@ -205,7 +205,7 @@ if($postvid->num_rows > 0) {
 
 } else if ($rowpost['post_cat']==4 || $rowpost['post_cat']==5 || $rowpost['post_cat']==6) {
 
-    $postlink = $conn->query("SELECT posts.id AS postid, linkpost_src FROM POSTS INNER JOIN linkposts ON posts.id=post_id WHERE post_id=".$rowpost['postid']."");
+    $postlink = $conn->query("SELECT posts.id AS postid, linkpost_src FROM posts INNER JOIN linkposts ON posts.id=post_id WHERE post_id=".$rowpost['postid']."");
     if($postlink->num_rows > 0) {
         while ($rowlink = $postlink->fetch_assoc()) { ?>
 
@@ -226,8 +226,8 @@ if($postvid->num_rows > 0) {
 
 
                         <div class="panel-body">
-                            
- <?php 
+
+ <?php
  $likepost = $conn->query("SELECT likes_posts.id AS likeid, liked_by, post_id, avatar FROM likes_posts INNER JOIN users ON liked_by=users.id WHERE post_id=".$rowpost['postid']."");
  if($likepost->num_rows > 0) {
      $t = 0;

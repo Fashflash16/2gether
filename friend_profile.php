@@ -231,7 +231,7 @@ include ('includes/make_f-posts.php');
 
                                                                 <?php if ($rowpost['post_cat'] == 2) {
 
-                                                                    $postpic = $conn->query("SELECT posts.id AS postid, photopost_src, photopost_thumb FROM POSTS INNER JOIN photoposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
+                                                                    $postpic = $conn->query("SELECT posts.id AS postid, photopost_src, photopost_thumb FROM posts INNER JOIN photoposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
                                                                     if ($postpic->num_rows > 0) {
                                                                         while ($rowpic = $postpic->fetch_assoc()) { ?>
 
@@ -242,7 +242,7 @@ include ('includes/make_f-posts.php');
                                                                     }
 
                                                                 } else if ($rowpost['post_cat'] == 3) {
-                                                                    $postvid = $conn->query("SELECT posts.id AS postid, videopost_src FROM POSTS INNER JOIN videoposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
+                                                                    $postvid = $conn->query("SELECT posts.id AS postid, videopost_src FROM posts INNER JOIN videoposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
                                                                     if ($postvid->num_rows > 0) {
                                                                         while ($rowvid = $postvid->fetch_assoc()) { ?>
 
@@ -261,7 +261,7 @@ include ('includes/make_f-posts.php');
 
                                                                 } else if ($rowpost['post_cat'] == 4 || $rowpost['post_cat'] == 5 || $rowpost['post_cat'] == 6) {
 
-                                                                    $postlink = $conn->query("SELECT posts.id AS postid, linkpost_src FROM POSTS INNER JOIN linkposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
+                                                                    $postlink = $conn->query("SELECT posts.id AS postid, linkpost_src FROM posts INNER JOIN linkposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
                                                                     if ($postlink->num_rows > 0) {
                                                                         while ($rowlink = $postlink->fetch_assoc()) { ?>
 
@@ -481,7 +481,7 @@ include ('includes/make_f-posts.php');
                                                                     </div>
                                                                     <?php if ($rowpost['post_cat'] == 2) {
 
-                                                                        $postpic = $conn->query("SELECT posts.id AS postid, photopost_src, photopost_thumb FROM POSTS INNER JOIN photoposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
+                                                                        $postpic = $conn->query("SELECT posts.id AS postid, photopost_src, photopost_thumb FROM posts INNER JOIN photoposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
                                                                         if ($postpic->num_rows > 0) {
                                                                             while ($rowpic = $postpic->fetch_assoc()) { ?>
 
@@ -492,7 +492,7 @@ include ('includes/make_f-posts.php');
                                                                         }
 
                                                                     } else if ($rowpost['post_cat'] == 3) {
-                                                                        $postvid = $conn->query("SELECT posts.id AS postid, videopost_src FROM POSTS INNER JOIN videoposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
+                                                                        $postvid = $conn->query("SELECT posts.id AS postid, videopost_src FROM posts INNER JOIN videoposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
                                                                         if ($postvid->num_rows > 0) {
                                                                             while ($rowvid = $postvid->fetch_assoc()) { ?>
 
@@ -511,7 +511,7 @@ include ('includes/make_f-posts.php');
 
                                                                     } else if ($rowpost['post_cat'] == 4 || $rowpost['post_cat'] == 5 || $rowpost['post_cat'] == 6) {
 
-                                                                        $postlink = $conn->query("SELECT posts.id AS postid, linkpost_src FROM POSTS INNER JOIN linkposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
+                                                                        $postlink = $conn->query("SELECT posts.id AS postid, linkpost_src FROM posts INNER JOIN linkposts ON posts.id=post_id WHERE post_id=" . $rowpost['postid'] . "");
                                                                         if ($postlink->num_rows > 0) {
                                                                             while ($rowlink = $postlink->fetch_assoc()) { ?>
 

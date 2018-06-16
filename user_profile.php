@@ -21,7 +21,7 @@ $email= $_SESSION['email'];
 $query = $conn->query("SELECT id, first_name, last_name, avatar, sex, day_id, email FROM users WHERE email='$email'");
 
 if ($query->num_rows > 0) {
-      
+
       while($row = $query->fetch_assoc()) {
 
     $frindex=$row['id'];
@@ -29,7 +29,7 @@ if ($query->num_rows > 0) {
 
     ?>
 
-    
+
 
 <body>
 
@@ -46,7 +46,7 @@ if ($query->num_rows > 0) {
 ?>
 
 
-    
+
 
 
     <div class="chat-window-container"></div>
@@ -632,9 +632,9 @@ if ($row_m['id']==$rowmonth['moid']) echo "selected";
     </div>
     <!-- /st-pusher -->
 
-   <?php 
+   <?php
 
-} 
+}
 
       }
 
