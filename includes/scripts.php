@@ -38,96 +38,14 @@
     };
   </script>
 
-  <!-- Vendor Scripts Bundle
-    Includes all of the 3rd party JavaScript libraries above.
-    The bundle was generated using modern frontend development tools that are provided with the package
-    To learn more about the development process, please refer to the documentation.
-    Do not use it simultaneously with the separate bundles above. -->
+
   <script src="js/vendor/all.js"></script>
 
-  <!-- Vendor Scripts Standalone Libraries -->
-  <!-- <script src="js/vendor/core/all.js"></script> -->
-  <!-- <script src="js/vendor/core/jquery.js"></script> -->
-  <!-- <script src="js/vendor/core/bootstrap.js"></script> -->
-  <!-- <script src="js/vendor/core/breakpoints.js"></script> -->
-  <!-- <script src="js/vendor/core/jquery.nicescroll.js"></script> -->
-  <!-- <script src="js/vendor/core/isotope.pkgd.js"></script> -->
-  <!-- <script src="js/vendor/core/packery-mode.pkgd.js"></script> -->
-  <!-- <script src="js/vendor/core/jquery.grid-a-licious.js"></script> -->
-  <!-- <script src="js/vendor/core/jquery.cookie.js"></script> -->
-  <!-- <script src="js/vendor/core/jquery-ui.custom.js"></script> -->
-  <!-- <script src="js/vendor/core/jquery.hotkeys.js"></script> -->
-  <!-- <script src="js/vendor/core/handlebars.js"></script> -->
-  <!-- <script src="js/vendor/core/jquery.hotkeys.js"></script> -->
-  <!-- <script src="js/vendor/core/load_image.js"></script> -->
-  <!-- <script src="js/vendor/core/jquery.debouncedresize.js"></script> -->
-  <!-- <script src="js/vendor/tables/all.js"></script> -->
-  <!-- <script src="js/vendor/forms/all.js"></script> -->
-  <!-- <script src="js/vendor/media/all.js"></script> -->
-  <!-- <script src="js/vendor/player/all.js"></script> -->
-  <!-- <script src="js/vendor/charts/all.js"></script> -->
-  <!-- <script src="js/vendor/charts/flot/all.js"></script> -->
-  <!-- <script src="js/vendor/charts/easy-pie/jquery.easypiechart.js"></script> -->
-  <!-- <script src="js/vendor/charts/morris/all.js"></script> -->
-  <!-- <script src="js/vendor/charts/sparkline/all.js"></script> -->
-  <!-- <script src="js/vendor/maps/vector/all.js"></script> -->
-  <!-- <script src="js/vendor/tree/jquery.fancytree-all.js"></script> -->
-  <!-- <script src="js/vendor/nestable/jquery.nestable.js"></script> -->
-  <!-- <script src="js/vendor/angular/all.js"></script> -->
 
-  <!-- App Scripts Bundle
-    Includes Custom Application JavaScript used for the current theme/module;
-    Do not use it simultaneously with the standalone modules below. -->
+
   <script src="js/app/app.js"></script>
 
-  <!-- App Scripts Standalone Modules
-    As a convenience, we provide the entire UI framework broke down in separate modules
-    Some of the standalone modules may have not been used with the current theme/module
-    but ALL the modules are 100% compatible -->
 
-  <!-- <script src="js/app/essentials.js"></script> -->
-  <!-- <script src="js/app/layout.js"></script> -->
-  <!-- <script src="js/app/sidebar.js"></script> -->
-  <!-- <script src="js/app/media.js"></script> -->
-  <!-- <script src="js/app/player.js"></script> -->
-  <!-- <script src="js/app/timeline.js"></script> -->
-  <!-- <script src="js/app/chat.js"></script> -->
-  <!-- <script src="js/app/maps.js"></script> -->
-  <!-- <script src="js/app/charts/all.js"></script> -->
-  <!-- <script src="js/app/charts/flot.js"></script> -->
-  <!-- <script src="js/app/charts/easy-pie.js"></script> -->
-  <!-- <script src="js/app/charts/morris.js"></script> -->
-  <!-- <script src="js/app/charts/sparkline.js"></script> -->
-
-  <!-- App Scripts CORE [social-2]:
-        Includes the custom JavaScript for this theme/module;
-        The file has to be loaded in addition to the UI modules above;
-        app.js already includes main.js so this should be loaded
-        ONLY when using the standalone modules; -->
-  <!-- <script src="js/app/main.js"></script> -->
-
- <script>
-
-     $("div[id^='myModal']").each(function(){
-
-         var currentModal = $(this);
-
-         //click next
-         currentModal.find('.fa-chevron-right').click(function(){
-             currentModal.modal('hide');
-             currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show');
-         });
-
-         //click prev
-         currentModal.find('.fa-chevron-left').click(function(){
-             currentModal.modal('hide');
-             currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show');
-         });
-
-     });
-
-
- </script>
 
  <script>
 
@@ -392,32 +310,6 @@
 
 
 
-<!--<script>
-     function selectChange(val)
-     {
-
-         $('#1').submit();
-
-
-     }
- </script>-->
-
- <!--<script>
-     function selectChange(val)
-     {
-
-         $('#2').submit();
-
-
-     }
- </script>-->
-<!--<script>
-
-    $(document).on('click',function(){
-        $('.collapse').collapse('hide');
-
-    })
-</script>-->
 
  <script type="text/javascript">
      $('.collapse').on('show.bs.collapse', function () {
@@ -430,13 +322,17 @@
 
 
 
- <script>
-
+<script>
     function chatboxclicked (elm) {
       var arr =  elm.getElementsByTagName('input');
-      var msg_id = arr[0].getAttribute('value');
-    console.log(msg_id);
-        var dataString = 'msgid='+ msg_id ;
+      var msg_to = arr[0].value;
+      var msg_from = arr[1].value;
+
+        var dataString = {
+        	'msg_to': msg_to,
+        	'msg_from': msg_from
+        };
+
         $.ajax({
             type: "post",
             url: "parse/read_messages.php",
@@ -451,11 +347,8 @@
                     }
                 }
             }
-
-
         });
             }
-
  </script>
 
 
@@ -505,62 +398,6 @@
  </script>
 
 
-<!--<script>
-$('.sendmsg').on('submit', function () {
-
-    var that = $(this),
-        url = that.attr('action'),
-        method = that.attr('method'),
-        data = {};
-
-    that.find([name]).each(function () {
-       var that =$(this),
-           name= that.attr('name'),
-           value = that.val();
-
-       data[name] = value;
-    });
-
-    $.ajax({
-       url: url,
-        type: type,
-        data: data,
-        success: function (html) {
-            $('.sendmsg input').val('');
-        }
-
-    });
-    return false;
-
-})
-
-
-</script>-->
-
-<!--<script>
-    $('#send').click(function () {
-
-        $.post($("#sendmessage").attr("action"), $("#sendmessage: input").serializeArray(), function (info) {
-            $("#result").html(info);
-        });
-        clearInput();
-    });
-
-
-        $("#sendmessage").submit(function () {
-            return false;
-        });
-
-
-        function clearInput(){
-            $("#sendmessage:input").each(function () {
-               $(this).val('');
-            });
-        }
-
-
-
-</script>-->
 
 
  <script>
@@ -1150,5 +987,3 @@ $('.sendmsg').on('submit', function () {
 
 
  </script>
-
-

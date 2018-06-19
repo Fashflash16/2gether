@@ -108,7 +108,8 @@ $sessionid = $row['id'];
       $text = $conn->query("SELECT messages.id AS msgid, users.first_name, avatar, msg_to, msg_from, messages.message AS text FROM messages INNER JOIN users ON users.id=msg_from WHERE (((msg_from=$sessionid AND msg_to=".$rowlist['userid'].") OR (msg_from=".$rowlist['userid']." AND msg_to=$sessionid)) AND users.id!=$sessionid AND recipient_del=0) GROUP BY messages.message ORDER BY sent_at DESC LIMIT 1");
               if($text->num_rows > 0) {
                   while ($rowtext = $text->fetch_assoc()) { ?>
-                 <input class="hidden" value="<?php echo $rowtext['msgid'] ?>"/>
+                 <input class="hidden" value="<?php echo $rowtext['msg_to'] ?>"/>
+                 <input class="hidden" value="<?php echo $rowtext['msg_from'] ?>"/>
                  <div class="message"><?php echo substr($rowtext['text'], 0, 42) .((strlen($rowtext['text']) > 42)?'...':''); ?></div>
 
                   <?php } } else { ?>
