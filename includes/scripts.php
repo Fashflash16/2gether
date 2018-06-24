@@ -352,6 +352,18 @@
  </script>
 
 
+ <script>
+ $(document).ready(function(e){
+	$.ajaxSetup({cache:false});
+
+	setInterval(function(){
+		$('#chatlogs').load('includes/message_logs.php');}, 2000);
+
+
+});
+ </script>
+
+
  <script src="js/custom-file-input.js"></script>
 
  <script>
